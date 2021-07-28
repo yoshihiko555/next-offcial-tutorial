@@ -1,0 +1,19 @@
+version: '3'
+services:
+  client:
+    image: node:16
+    container_name: client
+    tty: true
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./next-blog:/usr/src/app
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app
+    environment:
+      - NODE_ENV=development
+      # hot realodを有効化するための設定のはず。。。
+      # 実際これを設定しても、エラー吐いてうまくいかない
+      # - CHOKIDAR_USEPOLLING=true
+    # command: sh -c "yarn clear && yarn dev"
